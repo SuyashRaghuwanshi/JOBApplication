@@ -1,0 +1,13 @@
+# Ignore all build output
+/build/
+/android/.gradle/
+/android/app/build/
+/*.iml
+
+# Ignore intermediate libs
+**/intermediates/
+/**/libflutter.so
+
+# IDE and system files
+.idea/
+.DS_Store
