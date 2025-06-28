@@ -43,6 +43,7 @@ dependencies:
   flutter_zoom_drawer: ^3.0.4+1
   flutter_chat_bubble: ^2.0.2
   flutter_animate: ^4.1.1+1
+  cached_network_image: ^3.4.1
 
 
 
@@ -81,6 +82,8 @@ flutter:
     - assets/images/facebook.png
     - assets/images/user.png
     - assets/images/slack.png
+    - assets/icons/usa.svg
+    - assets/images/optimized_search.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
