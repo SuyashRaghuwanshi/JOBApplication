@@ -8,6 +8,7 @@ import 'package:jobhub/views/common/heading_widget.dart';
 import 'package:jobhub/views/common/height_spacer.dart';
 import 'package:jobhub/views/common/search.dart';
 import 'package:jobhub/views/common/vertical_tile.dart';
+import 'package:jobhub/views/ui/jobs/job_page.dart';
 import 'package:jobhub/views/ui/jobs/widgets/horizontal_tile.dart';
 import 'package:jobhub/views/ui/search/searchpage.dart';
 
@@ -76,6 +77,9 @@ class _HomePageState extends State<HomePage> {
                       return JobHorizontalTile(
                         onTap: () {
                           // Navigate to job details page
+                          Get.to(
+                            () => const JobPage(title: "Facebook", id: "12"),
+                          );
                         },
                       );
                     },
