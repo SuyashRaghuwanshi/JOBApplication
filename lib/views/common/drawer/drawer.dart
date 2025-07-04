@@ -7,7 +7,6 @@ import 'package:jobhub/controllers/zoom_provider.dart';
 import 'package:jobhub/views/common/app_style.dart';
 import 'package:jobhub/views/common/reusable_text.dart';
 import 'package:jobhub/views/common/width_spacer.dart';
-import 'package:jobhub/views/ui/mainscreen.dart';
 import 'package:provider/provider.dart';
 
 class DrawerScreen extends StatefulWidget {

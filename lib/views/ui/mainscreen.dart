@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:jobhub/controllers/zoom_provider.dart';
 import 'package:jobhub/views/common/drawer/drawer.dart';
 import 'package:jobhub/views/common/exports.dart';
-import 'package:jobhub/views/common/width_spacer.dart';
 import 'package:jobhub/views/ui/auth/profile.dart';
 import 'package:jobhub/views/ui/bookmarks/bookmarks.dart';
 import 'package:jobhub/views/ui/chat/chatpage.dart';

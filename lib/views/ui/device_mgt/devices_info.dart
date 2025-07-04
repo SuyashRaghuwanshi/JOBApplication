@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:jobhub/constants/app_constants.dart';
 import 'package:jobhub/controllers/login_provider.dart';
 import 'package:jobhub/controllers/onboarding_provider.dart';
 import 'package:jobhub/controllers/zoom_provider.dart';
 import 'package:jobhub/views/common/app_bar.dart';
-import 'package:jobhub/views/common/app_style.dart';
 import 'package:jobhub/views/common/drawer/drawer_widget.dart';
 import 'package:jobhub/views/common/exports.dart';
 import 'package:jobhub/views/common/height_spacer.dart';

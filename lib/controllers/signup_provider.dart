@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:jobhub/constants/app_constants.dart';
+import 'package:jobhub/models/request/auth/signup_model.dart';
+import 'package:jobhub/services/helpers/auth_helper.dart';
+import 'package:jobhub/views/ui/auth/login.dart';
 
 class SignUpNotifier extends ChangeNotifier {
   // trigger to hide and unhide the password
@@ -47,5 +53,25 @@ class SignUpNotifier extends ChangeNotifier {
     } else {
       return false;
     }
+  }
+
+  upSignup(SignupModel model) {
+    AuthHelper.signup(model).then((response) {
+      if (response) {
+        Get.off(
+          () => LoginPage(),
+          transition: Transition.fade,
+          duration: const Duration(seconds: 2),
+        );
+      } else {
+        Get.snackbar(
+          "SignUp Failed",
+          "Please Check your credentials",
+          colorText: Color(kLight.value),
+          backgroundColor: Colors.red,
+          icon: const Icon(Icons.add_alert),
+        );
+      }
+    });
   }
 }

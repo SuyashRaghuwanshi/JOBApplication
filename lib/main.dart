@@ -1,14 +1,32 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:jobhub/controllers/exports.dart';
+import 'package:jobhub/controllers/image_provider.dart';
+import 'package:jobhub/firebase_options.dart';
+import 'package:jobhub/views/ui/auth/login.dart';
+import 'package:jobhub/views/ui/mainscreen.dart';
 import 'package:jobhub/views/ui/onboarding/onboarding_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'views/common/exports.dart';
 
+Widget defaultHome = const OnBoardingScreen();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  final entrypoint = prefs.getBool('entrypoint') ?? false;
+  final loggedIn = prefs.getBool('loggedIn') ?? false;
+  if (entrypoint & !loggedIn) {
+    defaultHome = LoginPage();
+  } else if (entrypoint && loggedIn) {
+    defaultHome = const MainScreen();
+  }
+
   runApp(
     MultiProvider(
       providers: [
@@ -18,7 +36,7 @@ void main() async {
         ChangeNotifierProvider(create: (context) => SignUpNotifier()),
         ChangeNotifierProvider(create: (context) => JobsNotifier()),
         ChangeNotifierProvider(create: (context) => BookMarkNotifier()),
-        // ChangeNotifierProvider(create: (context) => ImageUpoader()),
+        ChangeNotifierProvider(create: (context) => ImageUploader()),
         ChangeNotifierProvider(create: (context) => ProfileNotifier()),
       ],
       child: const MyApp(),
@@ -44,7 +62,7 @@ class MyApp extends StatelessWidget {
             iconTheme: IconThemeData(color: Color(kDark.value)),
             primarySwatch: Colors.grey,
           ),
-          home: const OnBoardingScreen(),
+          home: defaultHome,
         );
       },
     );
