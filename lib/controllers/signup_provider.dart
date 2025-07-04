@@ -65,7 +65,7 @@ class SignUpNotifier extends ChangeNotifier {
         );
       } else {
         Get.snackbar(
-          "SignUp Failed",
+          "Signup Failed",
           "Please Check your credentials",
           colorText: Color(kLight.value),
           backgroundColor: Colors.red,

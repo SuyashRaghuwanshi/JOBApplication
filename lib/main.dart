@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:jobhub/controllers/exports.dart';
-import 'package:jobhub/controllers/image_provider.dart';
 import 'package:jobhub/firebase_options.dart';
 import 'package:jobhub/views/ui/auth/login.dart';
 import 'package:jobhub/views/ui/mainscreen.dart';
@@ -36,7 +35,7 @@ void main() async {
         ChangeNotifierProvider(create: (context) => SignUpNotifier()),
         ChangeNotifierProvider(create: (context) => JobsNotifier()),
         ChangeNotifierProvider(create: (context) => BookMarkNotifier()),
-        ChangeNotifierProvider(create: (context) => ImageUploader()),
+        // ChangeNotifierProvider(create: (context) => ImageUploader()),
         ChangeNotifierProvider(create: (context) => ProfileNotifier()),
       ],
       child: const MyApp(),

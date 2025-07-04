@@ -1,10 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:jobhub/controllers/exports.dart';
-import 'package:jobhub/controllers/image_provider.dart';
 import 'package:jobhub/models/request/auth/profile_update_model.dart';
 import 'package:jobhub/views/common/custom_btn.dart';
 import 'package:jobhub/views/common/custom_textfield.dart';
@@ -63,35 +59,35 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                         ),
                       ),
                     ),
-                    Consumer<ImageUploader>(
-                      builder: (context, imageUploader, child) {
-                        return imageUploader.imageFile.isEmpty
-                            ? GestureDetector(
-                                onTap: () {
-                                  imageUploader.pickImage();
-                                },
-                                child: CircleAvatar(
-                                  backgroundColor: Color(kLightBlue.value),
-                                  // backgroundImage: ,
-                                  child: Center(
-                                    child: Icon(Icons.photo_filter_rounded),
-                                  ),
-                                ),
-                              )
-                            : GestureDetector(
-                                onTap: () {
-                                  imageUploader.imageFile.clear();
-                                  setState(() {});
-                                },
-                                child: CircleAvatar(
-                                  backgroundColor: Color(kLightBlue.value),
-                                  backgroundImage: FileImage(
-                                    File(imageUploader.imageFile[0]),
-                                  ),
-                                ),
-                              );
-                      },
-                    ),
+                    // Consumer<ImageUploader>(
+                    //   builder: (context, imageUploader, child) {
+                    //     return imageUploader.imageFile.isEmpty
+                    //         ? GestureDetector(
+                    //             onTap: () {
+                    //               imageUploader.pickImage();
+                    //             },
+                    //             child: CircleAvatar(
+                    //               backgroundColor: Color(kLightBlue.value),
+                    //               // backgroundImage: ,
+                    //               child: Center(
+                    //                 child: Icon(Icons.photo_filter_rounded),
+                    //               ),
+                    //             ),
+                    //           )
+                    //         : GestureDetector(
+                    //             onTap: () {
+                    //               imageUploader.imageFile.clear();
+                    //               setState(() {});
+                    //             },
+                    //             child: CircleAvatar(
+                    //               backgroundColor: Color(kLightBlue.value),
+                    //               backgroundImage: FileImage(
+                    //                 File(imageUploader.imageFile[0]),
+                    //               ),
+                    //             ),
+                    //           );
+                    //   },
+                    // ),
                   ],
                 ),
                 HeightSpacer(size: 20),
@@ -205,38 +201,54 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                         },
                       ),
                       HeightSpacer(size: 20),
-                      Consumer<ImageUploader>(
-                        builder: (context, imageUpload, child) {
-                          return CustomButton(
-                            onTap: () {
-                              if (imageUpload.imageFile.isEmpty &&
-                                  imageUpload.imageUrl == null) {
-                                Get.snackbar(
-                                  "Image Missing",
-                                  "Please upload an image to procees",
-                                  colorText: Color(kLight.value),
-                                  backgroundColor: Color(kLightBlue.value),
-                                  icon: const Icon(Icons.add_alert),
-                                );
-                              } else {
-                                ProfileUpdateReq model = ProfileUpdateReq(
-                                  location: location.text,
-                                  phone: phone.text,
-                                  profile: imageUpload.imageUrl.toString(),
-                                  skills: [
-                                    skill0.text,
-                                    skill1.text,
-                                    skill2.text,
-                                    skill3.text,
-                                    skill4.text,
-                                  ],
-                                );
-                                loginNotifier.updateProfile(model);
-                              }
-                            },
-                            text: "Update Profile",
+                      // Consumer<ImageUploader>(
+                      //   builder: (context, imageUpload, child) {
+                      //     return CustomButton(
+                      //       onTap: () {
+                      //         if (imageUpload.imageFile.isEmpty &&
+                      //             imageUpload.imageUrl == null) {
+                      //           Get.snackbar(
+                      //             "Image Missing",
+                      //             "Please upload an image to procees",
+                      //             colorText: Color(kLight.value),
+                      //             backgroundColor: Color(kLightBlue.value),
+                      //             icon: const Icon(Icons.add_alert),
+                      //           );
+                      //         } else {
+                      //           ProfileUpdateReq model = ProfileUpdateReq(
+                      //             location: location.text,
+                      //             phone: phone.text,
+                      //             skills: [
+                      //               skill0.text,
+                      //               skill1.text,
+                      //               skill2.text,
+                      //               skill3.text,
+                      //               skill4.text,
+                      //             ],
+                      //           );
+                      //           loginNotifier.updateProfile(model);
+                      //         }
+                      //       },
+                      //       text: "Update Profile",
+                      //     );
+                      //   },
+                      // ),
+                      CustomButton(
+                        onTap: () {
+                          ProfileUpdateReq model = ProfileUpdateReq(
+                            location: location.text,
+                            phone: phone.text,
+                            skills: [
+                              skill0.text,
+                              skill1.text,
+                              skill2.text,
+                              skill3.text,
+                              skill4.text,
+                            ],
                           );
+                          loginNotifier.updateProfile(model);
                         },
+                        text: "Update Profile",
                       ),
                     ],
                   ),
