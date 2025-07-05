@@ -147,7 +147,9 @@ class AuthHelper {
     log("Status: ${response.statusCode}");
     log("Body: ${response.body}");
     if (response.statusCode == 200) {
+      log("Dheeraj");
       var profile = profileResFromJson(response.body);
+      log("Jai");
       return profile;
     } else {
       throw Exception("Failed to get the profile");
