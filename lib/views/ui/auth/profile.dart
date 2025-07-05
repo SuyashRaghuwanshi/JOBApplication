@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:get/get.dart';
 import 'package:jobhub/controllers/profile_provider.dart';
 import 'package:jobhub/models/response/auth/profile_model.dart';
 import 'package:jobhub/views/common/app_bar.dart';
@@ -10,6 +11,7 @@ import 'package:jobhub/views/common/drawer/drawer_widget.dart';
 import 'package:jobhub/views/common/exports.dart';
 import 'package:jobhub/views/common/height_spacer.dart';
 import 'package:jobhub/views/common/width_spacer.dart';
+import 'package:jobhub/views/ui/auth/profile_update.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -106,7 +108,10 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                             WidthSpacer(width: width * 0.1),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                profile = UserData.skills;
+                                Get.to(() => ProfileUpdate());
+                              },
                               child: Icon(Feather.edit, size: 18),
                             ),
                           ],
